@@ -10,13 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-     home : Scaffold(
-       appBar: AppBar(
-         title: Text("Login Form Validation"),
-       ),
-       body: LoginForm(),
-
-     ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Login Form Validation"),
+        ),
+        body: LoginForm(),
+      ),
     );
   }
 }
@@ -30,6 +29,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _Loginformkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final _myformlkey = GlobalKey<FormState>();
@@ -43,48 +43,42 @@ class _LoginFormState extends State<LoginForm> {
             children: [
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Enter Email Address',
-                  border: OutlineInputBorder()
-
-                ),
-                validator: (value){
-                  if(value==null||value.isEmpty){
+                    labelText: 'Enter Email Address',
+                    border: OutlineInputBorder()),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please Provider Email Address';
                   }
                   return null;
                 },
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Enter Password',
-                  border: OutlineInputBorder()
-                ),
-                validator: (value){
-                  if(value.length<6){
+                    labelText: 'Enter Password', border: OutlineInputBorder()),
+                validator: (value) {
+                  if (value.length < 6) {
                     return 'Please previder min 6 character';
                   }
                   return null;
                 },
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ElevatedButton(
-                  onPressed: (){
-                if(_myformlkey.currentState.validate()){
-                  return 'ok';
-                }
-
-              },
-
+                  onPressed: () {
+                    if (_myformlkey.currentState.validate()) {
+                      return 'ok';
+                    }
+                  },
                   child: Text('Login'))
             ],
           ),
         ),
       ),
-
     );
   }
 }
-
-
-
